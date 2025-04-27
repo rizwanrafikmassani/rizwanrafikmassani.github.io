@@ -2,63 +2,221 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Skybox Viewer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rizwan Rafik Massani</title>
+  <link rel="icon" type="image/png" href="./photo.png" >
+
   <style>
-    body { margin: 0; overflow: hidden; }
-    canvas { display: block; }
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Ariel', sans-serif;
+      background: url('./bottom.png') no-repeat center center/cover;
+      overflow-x: hidden;
+    }
+
+    .glass-overlay {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(.5px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      padding: 20px;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: 5em;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+      animation: fadeInDown 1s ease;
+    }
+
+    .subtitle {
+      font-size: 1.5em;
+      color: #e0e0e0;
+      margin-bottom: 30px;
+      animation: fadeInDown 1.5s ease;
+    }
+
+    .progress-bar {
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      overflow: hidden;
+      width: 80%;
+      max-width: 400px;
+      height: 15px;
+      margin: 20px 0;
+    }
+
+    .progress {
+      background-color: #66b3ff;
+      width: 20%; /* Adjust this for real progress */
+      height: 100%;
+      transition: width 0.5s ease;
+    }
+
+    button {
+      background-color: #66b3ff;
+      border: none;
+      padding: 10px 20px;
+      margin: 20px 0;
+      color: white;
+      font-size: 1em;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      animation: fadeInUp 2s ease;
+    }
+
+    button:hover {
+      background-color: #559fd6;
+    }
+
+    .circle-row {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 15px 0;
+      flex-wrap: wrap;
+    }
+
+    .circle {
+      width: 60px;
+      height: 60px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .circle:hover {
+      transform: scale(1.1);
+    }
+
+    .circle img {
+      width: 70%;
+      height: 70%;
+      object-fit: contain;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 3em;
+      }
+
+      .subtitle {
+        font-size: 1.2em;
+      }
+
+      .progress-bar {
+        width: 90%;
+      }
+
+      .circle {
+        width: 50px;
+        height: 50px;
+      }
+
+      .circle img {
+        width: 70%;
+        height: 70%;
+      }
+
+      button {
+        padding: 8px 16px;
+        font-size: 0.9em;
+      }
+    }
   </style>
 </head>
 <body>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
 
-  <script>
-    // Scene, Camera, Renderer setup
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(renderer.domElement);
+  <div class="glass-overlay">
+    <h1>UNDER CONSTRUCTION</h1>
+    <p class="subtitle">"The Collapse is only noise. Listen Closer — The New World hums beneath it"</p>
 
-    // Load the cubemap (ensure paths to the images are correct)
-    const loader = new THREE.CubeTextureLoader();
-    const skyboxTexture = loader.load([
-      'right.png',   // +X (Right)
-      'left.png',    // -X (Left)
-      'top.png',     // +Y (Top)
-      'bottom.png',  // -Y (Bottom)
-      'front.png',   // +Z (Front)
-      'back.png'     // -Z (Back)
-    ], () => {
-      console.log('Cubemap loaded successfully!');
-    }, undefined, (error) => {
-      console.error('Error loading cubemap:', error);
-    });
+    <!-- Progress Bar -->
+    <div class="progress-bar">
+      <div class="progress"></div>
+    </div>
 
-    // Set the scene's background to the skybox texture
-    scene.background = skyboxTexture;
+    <!-- Inform Me Button -->
+    <button>INFORM ME</button>
 
-    // Camera position (slightly further to view the skybox properly)
-    camera.position.set(0, 0, 0.1);  // Close to the center of the skybox
+    <!-- Social Media Icons -->
+    <div class="circle-row">
+      <div class="circle">
+        <a href="https://2ly.link/26ewD" target="_blank">
+          <img src="https://img.icons8.com/ios-filled/50/ffffff/linkedin.png" alt="LinkedIn">
+        </a>
+      </div>
+      <div class="circle">
+        <a href="https://2ly.link/26ewG" target="_blank">
+          <img src="./devto.png" alt="Dev.to">
+        </a>
+      </div>
+      <div class="circle">
+        <a href="https://2ly.link/26ewI" target="_blank">
+          <img src="https://img.icons8.com/ios-filled/50/ffffff/twitterx.png" alt="Twitter">
+        </a>
+      </div>
+    </div>
 
-    // Rotate the camera to simulate movement through the environment
-    function animate() {
-      requestAnimationFrame(animate);
+    <div class="circle-row">
+      <div class="circle">
+        <a href="https://2ly.link/26ewJ" target="_blank">
+          <img src="https://img.icons8.com/ios-filled/50/ffffff/github.png" alt="GitHub">
+        </a>
+      </div>
+      <div class="circle">
+        <a href="https://2ly.link/26ewK" target="_blank">
+          <img src="https://img.icons8.com/ios-filled/50/ffffff/behance.png" alt="Behance">
+        </a>
+      </div>
+      <div class="circle">
+        <a href="https://2ly.link/26ewN" target="_blank">
+          <img src="https://img.icons8.com/ios-filled/50/ffffff/domain.png" alt="Website">
+        </a>
+      </div>
+    </div>
+  </div>
 
-      // Slowly rotate the camera around the Y-axis to simulate movement through the skybox
-      camera.rotation.y += 0.0005;  // Adjust this value for faster or slower rotation
-      camera.rotation.x += 0.0002;  // Adjust this value for up/down rotation
-      // Render the scene with the camera
-      renderer.render(scene, camera);
-    }
-
-    animate();
-
-    // Handle window resizing
-    window.addEventListener('resize', () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    });
-  </script>
 </body>
 </html>
